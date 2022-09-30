@@ -1,0 +1,45 @@
+.main-container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.loader{
+    align-self: center;
+    margin: 0 10px;
+}
+
+.currency-converter{
+    display: flex;
+    height: 80px;
+}
+
+.currency-converter-item{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.currency-converter-item select{
+    height: 26px;
+    padding: 1px 2px;
+}
+
+.currency-converter-item input{
+    height: 20px;
+    margin-top: 10px ;
+}
+
+.swap-button{
+    align-self: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 2px;
+    background-color: #188fff;
+    background-image: url(https://widget-yahoo.ofx.com/resources/current/img/swap-vert.png);
+    background-position: 50% 50%;
+    background-size: 15px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transform: rotate(0.25turn);
+}

@@ -12,13 +12,13 @@ export const Header: React.FC = () => {
     const [headerCurrency, setHeaderCurrency] = useState<headerCurrency>({USD:0,EUR:0})
 
     useEffect(()=>{
-        getHeaderCurrency().then(data=> setHeaderCurrency(data.rates))
+       getHeaderCurrency().then(data=> setHeaderCurrency({USD:data.quotes.UAHUSD ,EUR:data.quotes.UAHEUR}))
     },[])
-    
+
    return (
     <div className='header-container'>
         {Object.keys(headerCurrency).map(currency=>
-            <CurrencyItem currency={currency} value={headerCurrency[currency as keyof headerCurrency]}/>)
+            <CurrencyItem key={currency} currency={currency} value={headerCurrency[currency as keyof headerCurrency]}/>)
         }
     </div>
    );
