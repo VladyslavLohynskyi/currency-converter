@@ -11,24 +11,9 @@
 
 .currency-converter{
     display: flex;
-    height: 80px;
-}
-
-.currency-converter-item{
-    display: flex;
     flex-direction: column;
-    margin: 10px;
 }
 
-.currency-converter-item select{
-    height: 26px;
-    padding: 1px 2px;
-}
-
-.currency-converter-item input{
-    height: 20px;
-    margin-top: 10px ;
-}
 
 .swap-button{
     align-self: center;
@@ -42,4 +27,12 @@
     background-repeat: no-repeat;
     cursor: pointer;
     transform: rotate(0.25turn);
+}
+
+@media screen and (min-width:400px) {
+    .currency-converter{ 
+        display: flex;
+        flex-direction: row;
+        height: 80px;
+    }
 }

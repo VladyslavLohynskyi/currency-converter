@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo } from "react";
+import React from "react";
 import { getConvertedCurrency } from "../../http";
 import "./ConverterItem.css";
 import { ConverterItemType } from "./ConverterItemType";
-import debounce from "lodash.debounce";
+
+
 
 export const ConverterItem: React.FC<ConverterItemType> = ({
   selectValue,
@@ -15,32 +16,23 @@ export const ConverterItem: React.FC<ConverterItemType> = ({
   currencySymbols,
   setAnotherInputValue,
 }) => {
-    
-  useEffect(() => {
-    return () => {
-      debouncedInputChangeHandler.cancel();
-    };
-  }, []);
 
   function handleChangeSelect(e: React.ChangeEvent<HTMLSelectElement>) {
     setSelectValue(e.target.value);
     setIsConverting(true);
     getConvertedCurrency(anotherSelectValue, e.target.value, inputValue)
-      .then((data) => setAnotherInputValue(data.result))
+      .then((data) =>setAnotherInputValue(data.result))
       .then(() => setIsConverting(false));
   }
 
   function handleChangeInput(e: React.ChangeEvent<HTMLInputElement>) {
+    setInputValue(e.target.value);
     setIsConverting(true);
     getConvertedCurrency(selectValue, anotherSelectValue, e.target.value)
       .then((data) => setAnotherInputValue(data.result))
-      .then(() => setIsConverting(false));
+        .then(() => setIsConverting(false));
   }
 
-  const debouncedInputChangeHandler = useMemo(
-    () => debounce(handleChangeInput, 300),
-    []
-  );
 
   return (
     <div className="currency-converter-item">
@@ -58,10 +50,7 @@ export const ConverterItem: React.FC<ConverterItemType> = ({
       <input
         type="number"
         value={inputValue}
-        onChange={(e) => {
-          setInputValue(e.target.value);
-          debouncedInputChangeHandler(e);
-        }}
+        onChange={handleChangeInput}
         disabled={isConverting}
       />
     </div>
