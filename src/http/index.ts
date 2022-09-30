@@ -1,5 +1,5 @@
 const headers:Headers = new Headers();
-headers.append("apikey", "your_api_key");
+headers.append("apikey", "5OJKfWZ84xld9b1OREFNbUO4fmwCrrG2");
 
 const requestOptions:RequestInit = {
   method: 'GET',

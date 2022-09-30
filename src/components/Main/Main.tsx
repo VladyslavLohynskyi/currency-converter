@@ -21,6 +21,17 @@ export const Main: React.FC = () => {
 
     },[])
 
+    const onClickSwapButton = () => {
+        const select1 = currencySelectValue1;
+        const select2 = currencySelectValue2;
+        setCurrencySelectValue1(select2);
+        setCurrencySelectValue2(select1);
+        setIsConverting(true);
+        getConvertedCurrency(select2,select1,currencyInputValue1)
+        .then(data=>setCurrencyInputValue2(data.result))
+            .then(()=>setIsConverting(false))
+    }
+
     return (
         <div className="main-container">
             {!currencySymbols.length?
@@ -54,7 +65,7 @@ export const Main: React.FC = () => {
                     ariaLabel="watch-loading"
                     visible={true}
                     wrapperClass="loader"
-                />:<span className='swap-button'/>
+                />:<span className='swap-button' onClick={onClickSwapButton}/>
                 }
                  <ConverterItem 
                     inputValue={currencyInputValue2} 
