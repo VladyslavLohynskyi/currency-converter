@@ -28,7 +28,7 @@ export const ConverterItem: React.FC<ConverterItemType> = ({
   function handleChangeInput(e: React.ChangeEvent<HTMLInputElement>) {
     setInputValue(e.target.value);
     setIsConverting(true);
-    getConvertedCurrency(selectValue, anotherSelectValue, e.target.value)
+    getConvertedCurrency(anotherSelectValue,selectValue, e.target.value)
       .then((data) => setAnotherInputValue(data.result))
         .then(() => setIsConverting(false));
   }
